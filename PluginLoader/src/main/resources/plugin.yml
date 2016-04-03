@@ -1,0 +1,16 @@
+name: PluginLoader
+main: org.inventivetalent.pluginloader.PluginLoader
+author: inventivetalent
+version: ${project.version}
+
+commands:
+  pluginloader:
+    aliases: [pl, pll, plloader, ploader]
+  plugininstall:
+    aliases: [pinstall, plinstall]
+  pluginenable:
+    aliases: [penable, plenable]
+  plugindisable:
+    aliases: [pdisable, pldisable]
+  plugininstallurl:
+    aliases: [pinstallurl, plinstallurl]

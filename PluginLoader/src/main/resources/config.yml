@@ -1,0 +1,6 @@
+#Whether to override existing plugin files
+overrriteFiles: false
+#Maximum search results to show
+maxSearchSize: 20
+#Allow external plugin downloads (not hosted on spigotmc.org | WARNING: This will not work with all external websites and might be insecure to use!)
+allowExternal: false
