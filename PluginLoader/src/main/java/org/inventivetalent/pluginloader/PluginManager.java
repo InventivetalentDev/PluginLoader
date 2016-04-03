@@ -156,6 +156,8 @@ public class PluginManager {
 					}
 					FileOutputStream output = new FileOutputStream(tempFile);
 					output.getChannel().transferFrom(channel, 0, Long.MAX_VALUE);
+					output.flush();
+					output.close();
 
 					plugin.getLogger().info("Saved temporary file to '" + tempFile.toString() + "'");
 					callback.downloadFinished();
