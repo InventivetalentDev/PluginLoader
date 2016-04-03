@@ -189,7 +189,7 @@ public class CommandHandler implements TabCompleter, CommandExecutor {
 				String url = plugin.mergeArray(args, 1, " ");
 
 				try {
-					plugin.pluginManager.downloadPluginUrl(false/* We don't know if it's external... */, url, new PluginDownloadCallback() {
+					plugin.pluginManager.downloadPluginUrl(false/* We don't know if it's external... */, url,new PluginInfo(), new PluginDownloadCallback() {
 						@Override
 						public void externalDownload(String link) {
 						}
@@ -206,6 +206,7 @@ public class CommandHandler implements TabCompleter, CommandExecutor {
 
 						@Override
 						public void downloadFailed(boolean external, String link) {
+							sender.sendMessage("§cDownload failed. See console for details.");
 						}
 
 						@Override

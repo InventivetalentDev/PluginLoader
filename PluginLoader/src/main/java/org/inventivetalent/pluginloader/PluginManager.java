@@ -124,10 +124,10 @@ public class PluginManager {
 				return;
 			}
 		}
-		downloadPluginUrl(info.external,"https://api.spiget.org/v1/resources/" + info.id + "/download?ut="+System.currentTimeMillis(), callback, info.name + "-" + info.id + "_v" + info.version + info.fileType);
+		downloadPluginUrl(info.external,"https://api.spiget.org/v1/resources/" + info.id + "/download?ut="+System.currentTimeMillis(), info,callback, info.name + "-" + info.id + "_v" + info.version + info.fileType);
 	}
 
-	public void downloadPluginUrl(final boolean external,final String url, final PluginDownloadCallback callback, final String fileName) {
+	public void downloadPluginUrl(final boolean external,final String url,final PluginInfo info, final PluginDownloadCallback callback, final String fileName) {
 		Bukkit.getScheduler().runTaskAsynchronously(plugin, new Runnable() {
 			@Override
 			public void run() {
@@ -146,12 +146,12 @@ public class PluginManager {
 						HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
 						connection.setRequestProperty("User-Agent", "PluginLoader/" + plugin.getDescription().getVersion());
 						if (connection.getResponseCode() != 200) {
-							callback.requestFailed(external,connection.getResponseCode(), connection.getResponseMessage(), url);
+							callback.requestFailed(external,connection.getResponseCode(), connection.getResponseMessage(), info.download);
 						}
 						channel = Channels.newChannel(connection.getInputStream());
 					} catch (IOException e) {
 						e.printStackTrace();
-						callback.downloadFailed(external, url);
+						callback.downloadFailed(external, info.download);
 						return;
 					}
 					FileOutputStream output = new FileOutputStream(tempFile);
