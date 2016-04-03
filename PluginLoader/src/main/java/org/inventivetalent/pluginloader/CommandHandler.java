@@ -156,7 +156,7 @@ public class CommandHandler implements TabCompleter, CommandExecutor {
 									sender.sendMessage("§cThis external resource doesn't support Spiget.");
 								}
 
-								sender.sendMessage("§cThe download request failed" + (errorMsg != null && errorMsg.length() > 0 ? ": " + errorMsg : " (Error #" + errorCode + ")."));
+								sender.sendMessage("§cThe download request failed" + (errorMsg != null && errorMsg.length() > 0 ? ": " + errorMsg : "") + " (Error #" + errorCode + ")");
 							}
 
 							@Override
